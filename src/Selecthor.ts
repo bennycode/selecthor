@@ -31,17 +31,20 @@ function selecthor(
 
   for (const filter of Object.values(query.filters)) {
     selection = selection.filter((item: any) => {
+      const value = filter.name
+        .split(".")
+        .reduce((properties, key) => properties[key], item);
       switch (filter.operator) {
         case "=":
-          return item[filter.name] === filter.value;
+          return value === filter.value;
         case ">":
-          return item[filter.name] > filter.value;
+          return value > filter.value;
         case "<":
-          return item[filter.name] < filter.value;
+          return value < filter.value;
         case "<=":
-          return item[filter.name] <= filter.value;
+          return value <= filter.value;
         case ">=":
-          return item[filter.name] >= filter.value;
+          return value >= filter.value;
         default:
           return false;
       }
