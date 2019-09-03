@@ -148,4 +148,39 @@ describe("Selecthor", () => {
     const selection = selecthor(data, query);
     expect(selection).toEqual([data.events[0], data.events[1]]);
   });
+
+  it("supports nested properties", () => {
+    const data = {
+      animals: [
+        {
+          legs: 2,
+          name: "Chimp",
+          speed: {
+            kph: 45,
+            mph: 27.96
+          }
+        },
+        {
+          legs: 4,
+          name: "Greyhound",
+          speed: {
+            kph: 72.42,
+            mph: 45
+          }
+        },
+        {
+          legs: 4,
+          name: "Polar Bear",
+          speed: {
+            kph: 40,
+            mph: 24.85
+          }
+        }
+      ]
+    };
+
+    const query = "select name from animals where speed.kph < 70";
+    const selection = selecthor(data, query);
+    expect(selection).toEqual([{ name: "Chimp" }, { name: "Polar Bear" }]);
+  });
 });
