@@ -2,7 +2,7 @@
 
 > Choose your data the way Thor's hammer chose Thor.
 
-Query language for data in JSON.
+Query language for JSON data.
 
 ## ❯ Installation
 
