@@ -29,23 +29,6 @@ function selecthor(
   let selection: Record<string, any> = Object.assign({}, input);
   selection = selection[query.table];
 
-  // SELECT
-  const propertiesIndex = tokens.indexOf("select") + 1;
-  const properties = tokens[propertiesIndex];
-  if (properties !== "*") {
-    const mappings = properties.split(",");
-    selection = selection.map((item: any) => {
-      const newItem = { ...item };
-      const ownProperties = Object.keys(newItem);
-      for (const ownProperty of ownProperties) {
-        if (!mappings.includes(ownProperty)) {
-          delete newItem[ownProperty];
-        }
-      }
-      return newItem;
-    });
-  }
-
   for (const filter of Object.values(query.filters)) {
     selection = selection.filter((item: any) => {
       switch (filter.operator) {
@@ -62,6 +45,23 @@ function selecthor(
         default:
           return false;
       }
+    });
+  }
+
+  // SELECT
+  const propertiesIndex = tokens.indexOf("select") + 1;
+  const properties = tokens[propertiesIndex];
+  if (properties !== "*") {
+    const mappings = properties.split(",");
+    selection = selection.map((item: any) => {
+      const newItem = { ...item };
+      const ownProperties = Object.keys(newItem);
+      for (const ownProperty of ownProperties) {
+        if (!mappings.includes(ownProperty)) {
+          delete newItem[ownProperty];
+        }
+      }
+      return newItem;
     });
   }
 

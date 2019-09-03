@@ -93,6 +93,19 @@ describe("Selecthor", () => {
     ]);
   });
 
+  it("selects partial properties from filtered records", () => {
+    const query = "select primary_key from events where category = 0";
+    const selection = selecthor(data, query);
+    expect(selection).toEqual([
+      {
+        primary_key: 1
+      },
+      {
+        primary_key: 2
+      }
+    ]);
+  });
+
   it("filters records equal to a specified numeric value", () => {
     const query = "select * from events where category = 16";
     const selection = selecthor(data, query);
