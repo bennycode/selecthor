@@ -1,4 +1,4 @@
-# Selecthor
+# SelecTHOR ⚡⚒️
 
 Query language for data in JSON.
 

@@ -27,7 +27,17 @@
   "files": [
     "dist"
   ],
-  "keywords": [],
+  "keywords": [
+    "data",
+    "JSON",
+    "lexer",
+    "query",
+    "select",
+    "selection",
+    "selector",
+    "SQL",
+    "tokenizer"
+  ],
   "license": "UNLICENSED",
   "main": "dist/index.js",
   "name": "selecthor",
