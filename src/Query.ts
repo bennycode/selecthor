@@ -1,11 +1,17 @@
+import { PropertyFilter } from "./PropertyFilter";
+
 export class Query {
-  filter: Record<string, string | number>;
+  filters: Record<string, PropertyFilter>;
   properties: string[];
   table: string;
 
   constructor(table: string) {
-    this.filter = {};
+    this.filters = {};
     this.properties = [];
     this.table = table;
+  }
+
+  addFilter(filter: PropertyFilter): void {
+    this.filters[filter.name] = filter;
   }
 }
