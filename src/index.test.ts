@@ -183,4 +183,18 @@ describe("Selecthor", () => {
     const selection = selecthor(data, query);
     expect(selection).toEqual([{ name: "Chimp" }, { name: "Polar Bear" }]);
   });
+
+  it("supports upper-cased keywords ", () => {
+    const id = "7821305a-c5dc-4e9d-a9ba-0d772653792d";
+    const query = `SELECT * FROM events WHERE id = '${id}'`;
+    const selection = selecthor(data, query);
+    expect(selection[0].id).toBe(id);
+  });
+
+  it("supports lower-cased keywords ", () => {
+    const id = "7821305a-c5dc-4e9d-a9ba-0d772653792d";
+    const query = `select * from events where id = '${id}'`;
+    const selection = selecthor(data, query);
+    expect(selection[0].id).toBe(id);
+  });
 });

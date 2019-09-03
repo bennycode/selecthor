@@ -48,7 +48,7 @@ const data = {
   ]
 };
 
-const query = "select name from animals where speed.kph < 70";
+const query = "SELECT name FROM animals WHERE speed.kph < 70";
 const selection = selecthor(data, query);
 
 console.log(JSON.stringify(selection)); // [{"name":"Chimp"},{"name":"Polar Bear"}]
