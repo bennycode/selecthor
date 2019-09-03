@@ -1,6 +1,14 @@
 import { PropertyFilter } from "./PropertyFilter";
 import { Query } from "./Query";
 
+/**
+ * Select data from a JSON object using SQL-like syntax.
+ *
+ * @param input - JSON data which you want to query.
+ * @param statement - Query in SQL-like syntax.
+ *
+ * @returns The query result.
+ */
 export function selecthor(
   input: Record<string, any>,
   statement: string

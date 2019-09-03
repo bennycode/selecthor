@@ -2,7 +2,16 @@
 
 > Choose your data the way Thor's hammer chose Thor.
 
-Query language inspired by SQL to select JSON data.
+Select JSON data with a query language inspired by SQL.
+
+## ❯ Features
+
+- **Easy-to-use.** Selecthor's API is dead simple, [easy to use](#-usage) and easy to replace (if you ever want to).
+- **Typed.** Selecthor is written [100% in TypeScript](./src/index.ts), so there is no need to install typings from an external source.
+- **Tested.** Don't be surprised when using Selecthor, it ships with [100% code coverage](./src/index.test.ts).
+- **Documented.** Modern documentation lives in code. That's why [Selecthor](./src/index.ts) contains TSDoc comments where needed.
+- **Compatible.** Node.js, Browsers? [Run Selecthor](https://runkit.com/npm/selecthor) on the platform of your choice!
+- **Independent.** Don't be afraid of big lock files. Selecthor uses [zero dependencies](https://www.npmjs.com/package/selecthor?activeTab=dependencies).
 
 ## ❯ Installation
 

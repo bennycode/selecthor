@@ -1,6 +1,6 @@
 {
   "dependencies": {},
-  "description": "Query language inspired by SQL to select JSON data.",
+  "description": "Select JSON data with a query language inspired by SQL.",
   "devDependencies": {
     "@types/jasmine": "3.4.0",
     "eslint": "6.3.0",
