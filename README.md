@@ -17,29 +17,39 @@ yarn add selecthor
 ## ❯ Usage
 
 ```javascript
-const selecthor = require("selecthor").default;
+const { selecthor } = require("selecthor");
 
 const data = {
-  users: [
+  animals: [
     {
-      name: "Benny"
+      legs: 2,
+      name: "Chimp",
+      speed: {
+        kph: 45,
+        mph: 27.96
+      }
     },
     {
-      name: "Sarah"
-    }
-  ],
-  items: [
-    {
-      name: "Ski"
+      legs: 4,
+      name: "Greyhound",
+      speed: {
+        kph: 72.42,
+        mph: 45
+      }
     },
     {
-      name: "Wakeboard"
+      legs: 4,
+      name: "Polar Bear",
+      speed: {
+        kph: 40,
+        mph: 24.85
+      }
     }
   ]
 };
 
-const query = "select * from users";
+const query = "select name from animals where speed.kph < 70";
 const selection = selecthor(data, query);
 
-console.log(JSON.stringify(selection)); // [{"name":"Benny"},{"name":"Sarah"}]
+console.log(JSON.stringify(selection)); // [{"name":"Chimp"},{"name":"Polar Bear"}]
 ```
