@@ -117,4 +117,11 @@ describe("Selecthor", () => {
     const selection = selecthor(data, query);
     expect(selection.length).toBe(0);
   });
+
+  it("filters records by a specific string value", () => {
+    const query =
+      "select * from events where time = '1970-01-01T00:00:00.000Z'";
+    const selection = selecthor(data, query);
+    expect(selection).toEqual([data.events[0], data.events[1]]);
+  });
 });

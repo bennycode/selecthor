@@ -12,6 +12,12 @@ export class PropertyFilter {
   constructor(data: PropertyFilterData) {
     this.name = data.name;
     this.operator = data.operator;
-    this.value = parseInt(`${data.value}`, 10);
+
+    const numericValue = parseInt(`${data.value}`, 10);
+    if (isNaN(numericValue)) {
+      this.value = (data.value as string).replace(/['"]+/g, "");
+    } else {
+      this.value = numericValue;
+    }
   }
 }
