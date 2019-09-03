@@ -2,7 +2,7 @@
 
 > Choose your data the way Thor's hammer chose Thor.
 
-Query language for JSON data.
+Query language inspired by SQL to select JSON data.
 
 ## ❯ Installation
 
