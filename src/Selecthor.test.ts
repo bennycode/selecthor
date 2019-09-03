@@ -18,7 +18,7 @@ describe("Selecthor", () => {
         legal_hold_status: 1,
         muted_state: 0,
         muted_timestamp: 0,
-        name: "Benny",
+        name: "Chat with Benny",
         others: ["6c3d1b7c-8985-418b-9897-739c84c9e2c5"],
         receipt_mode: null,
         status: 0,
@@ -76,10 +76,34 @@ describe("Selecthor", () => {
     ]
   };
 
-  it("selects everything", () => {
+  it("selects all properties", () => {
     const query = "select * from conversations";
     const selection = selecthor(data, query);
     expect(selection).toEqual(data.conversations);
+  });
+
+  it("selects partial properties", () => {
+    const query = "select id,name from conversations";
+    const selection = selecthor(data, query);
+    expect(selection).toEqual([
+      {
+        id: data.conversations[0].id,
+        name: data.conversations[0].name
+      }
+    ]);
+  });
+
+  it("selects partial properties from filtered records", () => {
+    const query = "select primary_key from events where category = 0";
+    const selection = selecthor(data, query);
+    expect(selection).toEqual([
+      {
+        primary_key: 1
+      },
+      {
+        primary_key: 2
+      }
+    ]);
   });
 
   it("filters records equal to a specified numeric value", () => {

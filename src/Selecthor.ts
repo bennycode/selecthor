@@ -48,6 +48,23 @@ function selecthor(
     });
   }
 
+  // SELECT
+  const propertiesIndex = tokens.indexOf("select") + 1;
+  const properties = tokens[propertiesIndex];
+  if (properties !== "*") {
+    const mappings = properties.split(",");
+    selection = selection.map((item: any) => {
+      const newItem = { ...item };
+      const ownProperties = Object.keys(newItem);
+      for (const ownProperty of ownProperties) {
+        if (!mappings.includes(ownProperty)) {
+          delete newItem[ownProperty];
+        }
+      }
+      return newItem;
+    });
+  }
+
   return selection;
 }
 
