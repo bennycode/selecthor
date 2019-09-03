@@ -1,5 +1,7 @@
 # SelecTHOR ⚡⚒️
 
+> Choose your data the way Thor's hammer chose Thor.
+
 Query language for data in JSON.
 
 ```javascript
