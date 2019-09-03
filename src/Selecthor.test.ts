@@ -81,4 +81,10 @@ describe("Selecthor", () => {
     const selection = selecthor(data, query);
     expect(selection).toBe(data.conversations);
   });
+
+  /**
+   * const query1 = 'select * from events where category = 16';
+   * const query2 = 'select * from events where time = \'1970-01-01T00:00:00.000Z\'';
+   * const query3 = 'select from,id from events where category = 0';
+   */
 });
