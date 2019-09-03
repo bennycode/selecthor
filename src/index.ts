@@ -6,14 +6,15 @@ export function selecthor(
   statement: string
 ): Record<string, any> {
   const tokens = statement.split(" ");
+  const lowerCasedTokens = statement.toLowerCase().split(" ");
 
   // FROM
-  const tableIndex = tokens.indexOf("from") + 1;
+  const tableIndex = lowerCasedTokens.indexOf("from") + 1;
   const tableName = tokens[tableIndex];
   const query = new Query(tableName);
 
   // WHERE
-  const whereIndex = tokens.indexOf("where");
+  const whereIndex = lowerCasedTokens.indexOf("where");
   if (whereIndex > -1) {
     const propertyName = tokens[whereIndex + 1];
     const operator = tokens[whereIndex + 2];
@@ -52,7 +53,7 @@ export function selecthor(
   }
 
   // SELECT
-  const propertiesIndex = tokens.indexOf("select") + 1;
+  const propertiesIndex = lowerCasedTokens.indexOf("select") + 1;
   const properties = tokens[propertiesIndex];
   if (properties !== "*") {
     const mappings = properties.split(",");
