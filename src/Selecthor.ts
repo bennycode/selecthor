@@ -1,14 +1,54 @@
+import { PropertyFilter } from "./PropertyFilter";
 import { Query } from "./Query";
 
 function selecthor(
   input: Record<string, any>,
-  query: string
+  statement: string
 ): Record<string, any> {
-  const tokens = query.split(" ");
+  const tokens = statement.split(" ");
+
+  // FROM
   const tableIndex = tokens.indexOf("from") + 1;
   const tableName = tokens[tableIndex];
-  const selection = new Query(tableName);
-  return input[selection.table];
+  const query = new Query(tableName);
+
+  // WHERE
+  const whereIndex = tokens.indexOf("where");
+  if (whereIndex > -1) {
+    const propertyName = tokens[whereIndex + 1];
+    const operator = tokens[whereIndex + 2];
+    const value = tokens[whereIndex + 3];
+    const filter = new PropertyFilter({
+      name: propertyName,
+      operator,
+      value
+    });
+    query.addFilter(filter);
+  }
+
+  let selection: Record<string, any> = Object.assign({}, input);
+  selection = selection[query.table];
+
+  for (const filter of Object.values(query.filters)) {
+    selection = selection.filter((item: any) => {
+      switch (filter.operator) {
+        case "=":
+          return item[filter.name] === filter.value;
+        case ">":
+          return item[filter.name] > filter.value;
+        case "<":
+          return item[filter.name] < filter.value;
+        case "<=":
+          return item[filter.name] <= filter.value;
+        case ">=":
+          return item[filter.name] >= filter.value;
+        default:
+          return false;
+      }
+    });
+  }
+
+  return selection;
 }
 
 export default selecthor;
