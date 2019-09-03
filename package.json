@@ -1,6 +1,6 @@
 {
   "dependencies": {},
-  "description": "",
+  "description": "Query language inspired by SQL to select JSON data.",
   "devDependencies": {
     "@types/jasmine": "3.4.0",
     "eslint": "6.3.0",
@@ -39,7 +39,7 @@
     "SQL",
     "tokenizer"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "dist/index.js",
   "name": "selecthor",
   "repository": {
