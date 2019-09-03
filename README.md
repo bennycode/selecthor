@@ -4,6 +4,18 @@
 
 Query language for data in JSON.
 
+## ❯ Installation
+
+```bash
+npm install selecthor
+```
+
+```bash
+yarn add selecthor
+```
+
+## ❯ Usage
+
 ```javascript
 const selecthor = require("selecthor").default;
 
