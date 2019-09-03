@@ -1,4 +1,4 @@
-import selecthor from "./Selecthor";
+import { selecthor } from "./index";
 
 describe("Selecthor", () => {
   const data = {
