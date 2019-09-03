@@ -1,19 +1,31 @@
-# ts-node-starter
+# Selecthor
 
-TEXT
+Query language for data in JSON.
 
-## ❯ Features
+```javascript
+const selecthor = require("selecthor").default;
 
-- TEXT
+const data = {
+  users: [
+    {
+      name: "Benny"
+    },
+    {
+      name: "Sarah"
+    }
+  ],
+  items: [
+    {
+      name: "Ski"
+    },
+    {
+      name: "Wakeboard"
+    }
+  ]
+};
 
-## ❯ Installation
+const query = "select * from users";
+const selection = selecthor(data, query);
 
-```bash
-TEXT
-```
-
-## ❯ Usage
-
-```typescript
-// TEXT
+console.log(JSON.stringify(selection)); // [{"name":"Benny"},{"name":"Sarah"}]
 ```
