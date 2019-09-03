@@ -82,38 +82,38 @@ describe("Selecthor", () => {
     expect(selection).toEqual(data.conversations);
   });
 
-  it('filters records equal to a specified numeric value', () => {
-    const query = 'select * from events where category = 16';
+  it("filters records equal to a specified numeric value", () => {
+    const query = "select * from events where category = 16";
     const selection = selecthor(data, query);
     expect(selection).toEqual([data.events[2]]);
   });
 
-  it('filters records greater than a specified numeric value', () => {
-    const query = 'select * from events where category > 0';
+  it("filters records greater than a specified numeric value", () => {
+    const query = "select * from events where category > 0";
     const selection = selecthor(data, query);
     expect(selection).toEqual([data.events[2]]);
   });
 
-  it('filters records less than a specified numeric value', () => {
-    const query = 'select * from events where category < 16';
+  it("filters records less than a specified numeric value", () => {
+    const query = "select * from events where category < 16";
     const selection = selecthor(data, query);
     expect(selection).toEqual([data.events[0], data.events[1]]);
   });
 
-  it('filters records less than or equal to a specified numeric value', () => {
-    const query = 'select * from events where category <= 16';
+  it("filters records less than or equal to a specified numeric value", () => {
+    const query = "select * from events where category <= 16";
     const selection = selecthor(data, query);
     expect(selection).toEqual([data.events[0], data.events[1], data.events[2]]);
   });
 
-  it('filters records greater than or equal to a specified numeric value', () => {
-    const query = 'select * from events where category >= 0';
+  it("filters records greater than or equal to a specified numeric value", () => {
+    const query = "select * from events where category >= 0";
     const selection = selecthor(data, query);
     expect(selection).toEqual([data.events[0], data.events[1], data.events[2]]);
   });
 
-  it('ignores unknown filter operators', () => {
-    const query = 'select * from events where category :: 0';
+  it("ignores unknown filter operators", () => {
+    const query = "select * from events where category :: 0";
     const selection = selecthor(data, query);
     expect(selection.length).toBe(0);
   });
